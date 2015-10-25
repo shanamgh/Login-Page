@@ -10,6 +10,7 @@ public class StartApplication {
 			MainFrame frame;
 			public void run() {
 				frame = new MainFrame();
+				System.out.println("j");
 			}
 		});
 
