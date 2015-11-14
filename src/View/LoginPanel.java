@@ -2,7 +2,10 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -10,37 +13,72 @@ import javax.swing.JTextField;
 
 public class LoginPanel extends JPanel {
 
-	JTextField userName;
-	JTextField password;
-	JLabel userLabel;
-	JLabel passLabel;
+	private JTextField userName;
+	private JTextField password;
+	public String getPassword() {
+		return password.getText();
+	}
 
-	JButton login;
+	private JLabel userLabel;
+	private JLabel passLabel;
+	private GridBagConstraints layout;
+
+	private JButton login;
+
+	public JButton getLogin() {
+		return login;
+	}
+
+	public void setLogin(JButton login) {
+		this.login = login;
+	}
 
 	LoginPanel() {
 
-		setSize(400, 400);
+		setSize(500,150);
 		setVisible(true);
-		setLayout(new BorderLayout());
+		setLayout(new GridBagLayout());
+		setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		createFields();
+	}
 
-		userName = new JTextField(10);
-		password = new JTextField(10);
-		login = new JButton("Login");
-		login.setSize(50, 50);
-		userLabel = new JLabel("UserName:");
-		passLabel = new JLabel("PassWord:");
-
-		userName.setVisible(true);
-		password.setVisible(true);
-		login.setVisible(true);
+	private void createFields() {
+		layout = new GridBagConstraints();
+		layout.ipadx = 15;
+		
+		userLabel = new JLabel("Username : ");
 		userLabel.setVisible(true);
+		layout.gridx = 0;
+		layout.gridy = 0;
+		add(userLabel,layout);
+		
+		userName = new JTextField(15);
+		userName.setVisible(true);
+		layout.gridx = 1;
+		layout.gridy = 0;
+		add(userName,layout);
+		
+		passLabel = new JLabel("Password : ");
 		passLabel.setVisible(true);
+		layout.gridx = 0;
+		layout.gridy = 1;
+		add(passLabel,layout);
+		
+		password = new JTextField(15);
+		password.setVisible(true);
+		layout.gridx = 1;
+		layout.gridy = 1;
+		add(password,layout);
+		
+		login = new JButton("Login");
+		login.setVisible(true);
+		login.setSize(25, 30);
+		layout.gridx = 1;
+		layout.gridy = 2;
+		add(login,layout);
+	}
 
-		add(userLabel, BorderLayout.WEST);
-		add(userName, BorderLayout.NORTH);
-		add(passLabel);
-		add(password, BorderLayout.CENTER);
-		add(login, BorderLayout.SOUTH);
-
+	public String getuserName() {
+		return userName.getText();
 	}
 }

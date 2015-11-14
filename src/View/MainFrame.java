@@ -7,17 +7,25 @@ import javax.swing.JFrame;
 
 public class MainFrame extends JFrame{
 	
-	LoginPanel loginPage;
+	private LoginPanel loginPanel;
 	
-	MainFrame(){
+	public LoginPanel getLoginPage() {
+		return loginPanel;
+	}
+
+	public void setLoginPage(LoginPanel loginPage) {
+		this.loginPanel = loginPage;
+	}
+
+	public MainFrame(){
 		
-		loginPage=new LoginPanel();
+		loginPanel=new LoginPanel();
 		setTitle("Login Page");
-		setSize(400, 400);
+		setSize(500, 200);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
-		add(loginPage);
+		add(loginPanel);
 		
 	}
 }
